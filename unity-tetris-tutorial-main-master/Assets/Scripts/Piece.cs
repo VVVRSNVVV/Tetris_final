@@ -2,6 +2,10 @@ using UnityEngine;
 
 public class Piece : MonoBehaviour
 {
+    [SerializeField] private AudioClip rotation;
+    [SerializeField] private AudioClip land;
+    
+
     public Board board { get; private set; }
     public TetrominoData data { get; private set; }
     public Vector3Int[] cells { get; private set; }
@@ -109,6 +113,7 @@ public class Piece : MonoBehaviour
         }
 
         Lock();
+        SoundManager.instance.PlaySound(land);
     }
 
     private void Lock()
@@ -153,6 +158,7 @@ public class Piece : MonoBehaviour
             rotationIndex = originalRotation;
             ApplyRotationMatrix(-direction);
         }
+        SoundManager.instance.PlaySound(rotation);
     }
 
     private void ApplyRotationMatrix(int direction)

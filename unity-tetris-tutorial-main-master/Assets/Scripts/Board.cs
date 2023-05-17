@@ -4,6 +4,8 @@ using UnityEngine.Tilemaps;
 
 public class Board : MonoBehaviour
 {
+    [SerializeField] private AudioClip lineCleared;
+
     [SerializeField] private TetranimosSequencer _sequencer;
     public Tilemap tilemap { get; private set; }
     public Piece activePiece { get; private set; }
@@ -75,6 +77,7 @@ public class Board : MonoBehaviour
             Vector3Int tilePosition = piece.cells[i] + piece.position;
             tilemap.SetTile(tilePosition, null);
         }
+        SoundManager.instance.PlaySound(lineCleared);
     }
 
     public bool IsValidPosition(Piece piece, Vector3Int position)
