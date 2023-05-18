@@ -77,7 +77,6 @@ public class Board : MonoBehaviour
             Vector3Int tilePosition = piece.cells[i] + piece.position;
             tilemap.SetTile(tilePosition, null);
         }
-        SoundManager.instance.PlaySound(lineCleared);
     }
 
     public bool IsValidPosition(Piece piece, Vector3Int position)
@@ -130,6 +129,7 @@ public class Board : MonoBehaviour
         if (linesCleared != 0)
         {
             OnLinesCleared?.Invoke(linesCleared);
+            SoundManager.instance.PlaySound(lineCleared);
         }
     }
 
