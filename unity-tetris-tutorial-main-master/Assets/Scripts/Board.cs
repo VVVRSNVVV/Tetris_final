@@ -58,6 +58,8 @@ public class Board : MonoBehaviour
     {
         tilemap.ClearAllTiles();
 
+        Application.LoadLevel("GameOver");
+
         // Do anything else you want on game over here..
     }
 
