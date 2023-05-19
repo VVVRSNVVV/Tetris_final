@@ -13,7 +13,7 @@ public class GameOverScoreMenu : MonoBehaviour
 
     private void ScoreOut()
     {
-        textMeshPro.text = $"Max score: {maxScore.Value} \n Current score: {currentScore.Value}" ;
+        textMeshPro.text = $"Max score: {maxScore.Value} \nCurrent score: {currentScore.Value}" ;
     }
     
     private void Awake()
