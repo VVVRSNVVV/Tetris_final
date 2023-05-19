@@ -6,13 +6,19 @@ using UnityEngine;
 public class ScoreManager : MonoBehaviour
 {
     [SerializeField] private Board _board;
-    [SerializeField] private int _score;
+    [SerializeField] private ScoreValue currentScore;
+    [SerializeField] private ScoreValue maxScore;
     [SerializeField] private LevelManager _levelManager;
-    public int Score => _score;
+    public int Score => currentScore.Value;
+    public int MaxScore => maxScore.Value;
 
     public Action<int> onScoreUpdate;
 
-    // Start is called before the first frame update
+    private void Awake()
+    {
+        currentScore.Value = 0;
+        LoadScore();
+    }
     void Start()
     {
         _board.OnLinesCleared += _board_OnLinesCleared;
@@ -20,8 +26,8 @@ public class ScoreManager : MonoBehaviour
 
     private void _board_OnLinesCleared(int linesCleared)
     {
-        _score += GetScore(linesCleared, _levelManager.level);
-        onScoreUpdate?.Invoke(_score);
+        currentScore.Value += GetScore(linesCleared, _levelManager.level);
+        onScoreUpdate?.Invoke(currentScore.Value);
     }
     private int GetScore(int linesCleared, int level)
     {
@@ -36,9 +42,18 @@ public class ScoreManager : MonoBehaviour
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
 
+
+    //saving
+    public void SaveScore()
+    {
+        if (MaxScore >= Score) return;
+        maxScore.Value = Score;
+        SaveSystem.SaveScore(MaxScore);
+    }
+    public void LoadScore()
+    {
+        ScoreData data = SaveSystem.LoadScore();
+        maxScore.Value = data.score;
     }
 }

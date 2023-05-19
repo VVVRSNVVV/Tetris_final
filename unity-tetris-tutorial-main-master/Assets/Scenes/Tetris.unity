@@ -2736,6 +2736,7 @@ MonoBehaviour:
   _levelManager: {fileID: 1914057461}
   boardSize: {x: 10, y: 20}
   spawnPosition: {x: -1, y: 8, z: 0}
+  scoreManager: {fileID: 2123482000}
 --- !u!1 &1914057460
 GameObject:
   m_ObjectHideFlags: 0
@@ -3225,7 +3226,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _board: {fileID: 1887623656}
-  _score: 0
+  currentScore: {fileID: 11400000, guid: f6b30d9a918f4c941ac09e02aadb8ea2, type: 2}
+  maxScore: {fileID: 11400000, guid: e6a051f59ca21d84e8d00b3cc50e1d63, type: 2}
   _levelManager: {fileID: 1914057461}
 --- !u!4 &2123482001
 Transform:

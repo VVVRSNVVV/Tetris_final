@@ -13,6 +13,7 @@ public class Board : MonoBehaviour
     public Vector2Int boardSize = new Vector2Int(10, 20);
     public Vector3Int spawnPosition = new Vector3Int(-1, 8, 0);
 
+    [SerializeField] private ScoreManager scoreManager;
     public float GetStepDelay()
     {
         return Mathf.Pow((0.8f - (_levelManager.level) * 0.007f), _levelManager.level);
@@ -54,10 +55,14 @@ public class Board : MonoBehaviour
         }
     }
 
+
+
+
     public void GameOver()
     {
-        tilemap.ClearAllTiles();
 
+        tilemap.ClearAllTiles();
+        scoreManager.SaveScore();
         Application.LoadLevel("GameOver");
 
         // Do anything else you want on game over here..
@@ -91,7 +96,7 @@ public class Board : MonoBehaviour
             Vector3Int tilePosition = piece.cells[i] + position;
 
             // An out of bounds tile is invalid
-            if (!bounds.Contains((Vector2Int) tilePosition))
+            if (!bounds.Contains((Vector2Int)tilePosition))
             {
                 return false;
             }
