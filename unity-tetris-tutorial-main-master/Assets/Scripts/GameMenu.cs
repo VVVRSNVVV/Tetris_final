@@ -1,22 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameMenu : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private Button button;
+    private void Awake()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+       button.onClick.AddListener(PlayGame); 
     }
     public void PlayGame()
     {
-        Application.LoadLevel("Tetris");
+        
+        SceneManager.LoadScene("Tetris");
     }
 }
