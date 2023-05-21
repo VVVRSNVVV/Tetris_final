@@ -2712,6 +2712,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lineCleared: {fileID: 8300000, guid: 2ecfb8e066a6bb849a41221e665d1821, type: 3}
   _sequencer: {fileID: 1311726187}
+  tilemap: {fileID: 564011156}
+  activePiece: {fileID: 1887623655}
   _levelManager: {fileID: 1914057461}
   boardSize: {x: 10, y: 20}
   spawnPosition: {x: -1, y: 8, z: 0}
