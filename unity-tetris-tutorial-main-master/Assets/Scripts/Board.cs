@@ -4,13 +4,13 @@ using UnityEngine.Tilemaps;
 
 public class Board : MonoBehaviour
 {
-    
-    
+
+
     [SerializeField] private AudioClip lineCleared;
 
     [SerializeField] private TetranimosSequencer _sequencer;
     [SerializeField] private Tilemap tilemap;
-    [SerializeField]  private Piece activePiece;
+    [SerializeField] private Piece activePiece;
     public LevelManager _levelManager;
     public Vector2Int boardSize = new Vector2Int(10, 20);
     public Vector3Int spawnPosition = new Vector3Int(-1, 8, 0);
@@ -50,6 +50,7 @@ public class Board : MonoBehaviour
         {
             GameOver();
         }
+       
     }
 
 
