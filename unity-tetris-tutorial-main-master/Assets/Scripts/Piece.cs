@@ -8,7 +8,7 @@ public class Piece : MonoBehaviour
 
     public Board board { get; private set; }
     public TetrominoData data { get; private set; }
-    public Vector3Int[] cells { get; private set; }
+    public Vector3Int[] cells { get; private set; } = new Vector3Int[4];
     public Vector3Int position { get; private set; }
     public int rotationIndex { get; private set; }
 
@@ -31,10 +31,7 @@ public class Piece : MonoBehaviour
         moveTime = Time.time + moveDelay;
         lockTime = 0f;
 
-        if (cells == null)
-        {
-            cells = new Vector3Int[data.cells.Length];
-        }
+        
 
         for (int i = 0; i < cells.Length; i++)
         {

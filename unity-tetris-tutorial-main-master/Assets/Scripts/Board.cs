@@ -16,6 +16,10 @@ public class Board : MonoBehaviour
     public Vector3Int spawnPosition = new Vector3Int(-1, 8, 0);
 
     [SerializeField] private ScoreManager scoreManager;
+
+
+    public event Action<int> OnLinesCleared;
+
     public float GetStepDelay()
     {
         return Mathf.Pow((0.8f - (_levelManager.level) * 0.007f), _levelManager.level);
@@ -161,12 +165,7 @@ public class Board : MonoBehaviour
     {
         RectInt bounds = Bounds;
 
-        // Clear all tiles in the row
-        for (int col = bounds.xMin; col < bounds.xMax; col++)
-        {
-            Vector3Int position = new Vector3Int(col, row, 0);
-            tilemap.SetTile(position, null);
-        }
+       
 
         // Shift every row above down one
         while (row < bounds.yMax)
@@ -184,5 +183,5 @@ public class Board : MonoBehaviour
         }
     }
 
-    public event Action<int> OnLinesCleared;
+   
 }

@@ -9,7 +9,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] Board _board;
     public Action<int> onLevelUpdate;
 
-    // Start is called before the first frame update
+    
     void Awake()
     {
         _board.OnLinesCleared += _board_OnLinesCleared;
