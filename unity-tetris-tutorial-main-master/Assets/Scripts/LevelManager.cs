@@ -9,7 +9,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] Board _board;
     public Action<int> onLevelUpdate;
 
-    
+     private int linesClearedOnCurrentLevel;
     void Awake()
     {
         _board.OnLinesCleared += _board_OnLinesCleared;
@@ -26,11 +26,7 @@ public class LevelManager : MonoBehaviour
             onLevelUpdate?.Invoke(level);
         }
     }
-    int linesClearedOnCurrentLevel;
+   
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }

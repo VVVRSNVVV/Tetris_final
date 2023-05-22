@@ -4,6 +4,8 @@ public class TetranimosSequencer : MonoBehaviour
 {
     [SerializeField] private TetrominoData[] tetrominoes;
     private bool _isInited;
+    public TetrominoData Current { get; private set; }
+    public TetrominoData Next { get; private set; }
 
 
     private void Init()
@@ -30,8 +32,7 @@ public class TetranimosSequencer : MonoBehaviour
         return Current;
     }
 
-    public TetrominoData Current { get; private set; }
-    public TetrominoData Next { get; private set; }
+    
 
     private TetrominoData GetRandomTetrominoData()
     {
