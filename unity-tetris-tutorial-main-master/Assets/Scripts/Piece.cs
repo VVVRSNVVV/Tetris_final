@@ -20,6 +20,10 @@ public class Piece : MonoBehaviour
     private float moveTime;
     private float lockTime;
 
+    private bool _tryRotate = false;
+    private bool _tryHardDrop = false;
+    public void TryRotate() => _tryRotate = true;
+    public void TryHardDrop() => _tryHardDrop = true;
     public void Initialize(Board board, Vector3Int position, TetrominoData data)
     {
         this.data = data;
@@ -31,7 +35,7 @@ public class Piece : MonoBehaviour
         moveTime = Time.time + moveDelay;
         lockTime = 0f;
 
-        
+
 
         for (int i = 0; i < cells.Length; i++)
         {
@@ -48,19 +52,18 @@ public class Piece : MonoBehaviour
         lockTime += Time.deltaTime;
 
         // Handle rotation
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (_tryRotate)
         {
             Rotate(-1);
-        }
-        else if (Input.GetKeyDown(KeyCode.E))
-        {
-            Rotate(1);
+            _tryRotate = false;
         }
 
+
         // Handle hard drop
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (_tryHardDrop)
         {
             HardDrop();
+            _tryHardDrop = false;
         }
 
         // Allow the player to hold movement keys but only after a move delay

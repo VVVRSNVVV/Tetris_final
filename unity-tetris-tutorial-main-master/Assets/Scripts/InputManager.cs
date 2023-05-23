@@ -1,5 +1,5 @@
 using UnityEngine;
-
+[DefaultExecutionOrder(-1)]
 public class InputManager : MonoBehaviour
 {
     [SerializeField] private Board _board;
@@ -11,13 +11,14 @@ public class InputManager : MonoBehaviour
     [SerializeField] private PauseScript pauseScript;
     private Vector3 _startPosition;
     private bool _hasPieceMoved = false;
-
+    private Vector3 _lastV3Posititon;
     private void Update()
     {
         if (pauseScript.IsPaused) return;
         if (Input.GetMouseButtonDown(0))
         {
             _startPosition = GetRayPosition();
+            _lastV3Posititon = _startPosition;
             if (IsValidInputPosition(_startPosition))
             {
                 _isMovingPiece = true;
@@ -33,6 +34,12 @@ public class InputManager : MonoBehaviour
 
         if (!_isMovingPiece) return;
         Vector3 pos = GetRayPosition();
+        if ((pos - _lastV3Posititon).y < -.25f)
+        {
+            _piece.TryHardDrop();
+            _isMovingPiece = false;
+        }
+        _lastV3Posititon = pos;
         Vector2Int intPos = GetIntPosition(pos);
         if (intPos == _lastPosition) return;
         Vector2Int offset = intPos - _lastPosition;
@@ -81,12 +88,7 @@ public class InputManager : MonoBehaviour
         _board.Set(_piece);
     }
 
-    private void Rotate()
-    {
-        _board.Clear(_piece);
-        _piece.Rotate(1);
-        _board.Set(_piece);
-    }
+    private void Rotate() => _piece.TryRotate();
 
     private Vector3 GetRayPosition()
     {
