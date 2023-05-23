@@ -10,7 +10,7 @@ public class ScoreUI : MonoBehaviour
 
     private void updateText(int score)
     {
-        textMeshPro.text = $"score: {score}";
+        textMeshPro.text = $"{score}";
     }
 
     private void Awake()

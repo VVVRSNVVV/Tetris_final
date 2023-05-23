@@ -11,7 +11,7 @@ public class LevelUI : MonoBehaviour
 
     private void UpdateLevel(int level)
     {
-        textMeshPro.text = $"level: {_levelManager.level}";
+        textMeshPro.text = $"Level {_levelManager.level}";
     }
     private void Awake()
     {
