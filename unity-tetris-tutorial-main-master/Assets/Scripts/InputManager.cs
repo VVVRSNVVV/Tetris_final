@@ -8,15 +8,22 @@ public class InputManager : MonoBehaviour
     [SerializeField] private Vector2Int _lastPosition;
     [SerializeField] private float gridSize;
     [SerializeField] private bool _isMovingPiece;
+    [SerializeField] private PauseScript pauseScript;
     private Vector3 _startPosition;
     private bool _hasPieceMoved = false;
 
     private void Update()
     {
+        if (pauseScript.IsPaused) return;
         if (Input.GetMouseButtonDown(0))
         {
-            _isMovingPiece = true;
             _startPosition = GetRayPosition();
+            if (IsValidInputPosition(_startPosition))
+            {
+                _isMovingPiece = true;
+
+            }
+
         }
 
         if (Input.GetMouseButtonUp(0))
@@ -54,6 +61,7 @@ public class InputManager : MonoBehaviour
 
     private void Restore()
     {
+        if (!_isMovingPiece) return;
         if (!_hasPieceMoved)
         {
             Rotate();
@@ -86,5 +94,13 @@ public class InputManager : MonoBehaviour
         Plane plane = new Plane(Vector3.zero, Vector3.forward);
         plane.Raycast(ray, out float enter);
         return ray.GetPoint(enter);
+    }
+    private bool IsValidInputPosition(Vector3 posiiton)
+    {
+        float x = posiiton.x;
+        float y = posiiton.y;
+        bool isXValid = x>=-5f && x<=5f;
+        bool isYValid = x>=-10f && x<=10f;
+        return isXValid && isYValid;
     }
 }

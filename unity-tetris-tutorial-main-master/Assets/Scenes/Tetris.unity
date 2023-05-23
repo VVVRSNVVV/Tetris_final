@@ -704,6 +704,7 @@ MonoBehaviour:
   _lastPosition: {x: 0, y: 0}
   gridSize: 1
   _isMovingPiece: 0
+  pauseScript: {fileID: 840164369}
 --- !u!4 &383940502
 Transform:
   m_ObjectHideFlags: 0
@@ -3130,6 +3131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 753161e8efbfbc141b4054f410162333, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pauseScript: {fileID: 840164369}
 --- !u!1 &2061534952
 GameObject:
   m_ObjectHideFlags: 0
