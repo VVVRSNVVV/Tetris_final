@@ -96,6 +96,7 @@ public class Piece : MonoBehaviour
         while (Move(Vector2Int.down))
         {
             continue;
+            
         }
 
         Lock();
