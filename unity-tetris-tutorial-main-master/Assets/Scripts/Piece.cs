@@ -66,11 +66,6 @@ public class Piece : MonoBehaviour
         }
 
        
-        if (Time.time > moveTime)
-        {
-            HandleMoveInputs();
-        }
-
        
         if (Time.time > stepTime)
         {
@@ -80,28 +75,7 @@ public class Piece : MonoBehaviour
         board.Set(this);
     }
 
-    private void HandleMoveInputs()
-    {
-       
-        if (Input.GetKey(KeyCode.S))
-        {
-            if (Move(Vector2Int.down))
-            {
-              
-                stepTime = Time.time + stepDelay;
-            }
-        }
-
-       
-        if (Input.GetKey(KeyCode.A))
-        {
-            Move(Vector2Int.left);
-        }
-        else if (Input.GetKey(KeyCode.D))
-        {
-            Move(Vector2Int.right);
-        }
-    }
+  
 
     private void Step()
     {

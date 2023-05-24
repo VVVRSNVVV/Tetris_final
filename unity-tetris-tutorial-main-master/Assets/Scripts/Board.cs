@@ -63,7 +63,7 @@ public class Board : MonoBehaviour
     public void GameOver()
     {
 
-        tilemap.ClearAllTiles();
+        
         scoreManager.SaveScore();
         Application.LoadLevel("GameOver");
 

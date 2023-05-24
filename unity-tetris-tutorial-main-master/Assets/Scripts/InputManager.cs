@@ -6,7 +6,6 @@ public class InputManager : MonoBehaviour
     [SerializeField] private Camera _camera;
     [SerializeField] private Piece _piece;
     [SerializeField] private Vector2Int _lastPosition;
-    [SerializeField] private float gridSize;
     [SerializeField] private bool _isMovingPiece;
     [SerializeField] private PauseScript pauseScript;
     private Vector3 _startPosition;
@@ -34,7 +33,7 @@ public class InputManager : MonoBehaviour
 
         if (!_isMovingPiece) return;
         Vector3 pos = GetRayPosition();
-        if ((pos - _lastV3Posititon).y < -.25f)
+        if ((pos - _lastV3Posititon).y < -70f*Time.deltaTime)
         {
             _piece.TryHardDrop();
             _isMovingPiece = false;
